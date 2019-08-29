@@ -1,5 +1,5 @@
 # Revision history for tuples
 
-## 0.1.0.0 -- YYYY-mm-dd
+## 0.1.0.0 -- 2019-08-29
 
-* First version. Released on an unsuspecting world.
+* First version. Includes pairs and triples for `Int`, `Word`, `Double`, and `ByteArray`
