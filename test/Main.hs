@@ -7,6 +7,7 @@
 
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
+import Data.Tuple.Types (IntPair(..),WordPair(..))
 import Data.Tuple.Types (IntTriple(..),WordTriple(..))
 import Data.Tuple.Types (DoubleTriple(..),DoublePair(..))
 
@@ -47,4 +48,8 @@ instance Arbitrary DoubleTriple where
   arbitrary = liftA3 DoubleTriple arbitrary arbitrary arbitrary
 instance Arbitrary DoublePair where
   arbitrary = liftA2 DoublePair arbitrary arbitrary
+instance Arbitrary IntPair where
+  arbitrary = liftA2 IntPair arbitrary arbitrary
+instance Arbitrary WordPair where
+  arbitrary = liftA2 WordPair arbitrary arbitrary
 
