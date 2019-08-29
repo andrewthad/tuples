@@ -28,6 +28,8 @@ tests = testGroup "tuples"
   [ laws @IntTriple [primLaws]
   , laws @WordTriple [primLaws]
   , laws @DoubleTriple [primLaws]
+  , laws @IntPair [primLaws]
+  , laws @WordPair [primLaws]
   , laws @DoublePair [primLaws]
   ]
 

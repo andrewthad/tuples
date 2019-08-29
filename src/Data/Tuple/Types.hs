@@ -231,3 +231,79 @@ instance Prim DoublePair where
        s1 -> case P.writeOffAddr# addr# ((2# *# i#) +# 1#) b s1 of
          s2 -> s2
   setOffAddr# = P.defaultSetOffAddr#
+
+instance Prim IntPair where
+  {-# inline sizeOf# #-}
+  {-# inline alignment# #-}
+  {-# inline indexByteArray# #-}
+  {-# inline readByteArray# #-}
+  {-# inline writeByteArray# #-}
+  {-# inline setByteArray# #-}
+  {-# inline indexOffAddr# #-}
+  {-# inline readOffAddr# #-}
+  {-# inline writeOffAddr# #-}
+  {-# inline setOffAddr# #-}
+  sizeOf# _ = 2# *# P.sizeOf# (undefined :: Int)
+  alignment# _ = P.alignment# (undefined :: Int)
+  indexByteArray# arr# i# = IntPair
+    (P.indexByteArray# arr# (2# *# i#))
+    (P.indexByteArray# arr# ((2# *# i#) +# 1#))
+  readByteArray# arr# i# =
+    \s0 -> case P.readByteArray# arr# (2# *# i#) s0 of
+      (# s1, i0 #) -> case P.readByteArray# arr# ((2# *# i#) +# 1#) s1 of
+        (# s2, i1 #) -> (# s2, IntPair i0 i1 #)
+  writeByteArray# arr# i# (IntPair a b) =
+    \s0 -> case P.writeByteArray# arr# (2# *# i#) a s0 of
+       s1 -> case P.writeByteArray# arr# ((2# *# i#) +# 1#) b s1 of
+         s2 -> s2
+  setByteArray# = P.defaultSetByteArray#
+  indexOffAddr# arr# i# = IntPair
+    (P.indexOffAddr# arr# (2# *# i#))
+    (P.indexOffAddr# arr# ((2# *# i#) +# 1#))
+  readOffAddr# arr# i# =
+    \s0 -> case P.readOffAddr# arr# (2# *# i#) s0 of
+      (# s1, i0 #) -> case P.readOffAddr# arr# ((2# *# i#) +# 1#) s1 of
+        (# s2, i1 #) -> (# s2, IntPair i0 i1 #)
+  writeOffAddr# addr# i# (IntPair a b) =
+    \s0 -> case P.writeOffAddr# addr# (2# *# i#) a s0 of
+       s1 -> case P.writeOffAddr# addr# ((2# *# i#) +# 1#) b s1 of
+         s2 -> s2
+  setOffAddr# = P.defaultSetOffAddr#
+
+instance Prim WordPair where
+  {-# inline sizeOf# #-}
+  {-# inline alignment# #-}
+  {-# inline indexByteArray# #-}
+  {-# inline readByteArray# #-}
+  {-# inline writeByteArray# #-}
+  {-# inline setByteArray# #-}
+  {-# inline indexOffAddr# #-}
+  {-# inline readOffAddr# #-}
+  {-# inline writeOffAddr# #-}
+  {-# inline setOffAddr# #-}
+  sizeOf# _ = 2# *# P.sizeOf# (undefined :: Int)
+  alignment# _ = P.alignment# (undefined :: Int)
+  indexByteArray# arr# i# = WordPair
+    (P.indexByteArray# arr# (2# *# i#))
+    (P.indexByteArray# arr# ((2# *# i#) +# 1#))
+  readByteArray# arr# i# =
+    \s0 -> case P.readByteArray# arr# (2# *# i#) s0 of
+      (# s1, i0 #) -> case P.readByteArray# arr# ((2# *# i#) +# 1#) s1 of
+        (# s2, i1 #) -> (# s2, WordPair i0 i1 #)
+  writeByteArray# arr# i# (WordPair a b) =
+    \s0 -> case P.writeByteArray# arr# (2# *# i#) a s0 of
+       s1 -> case P.writeByteArray# arr# ((2# *# i#) +# 1#) b s1 of
+         s2 -> s2
+  setByteArray# = P.defaultSetByteArray#
+  indexOffAddr# arr# i# = WordPair
+    (P.indexOffAddr# arr# (2# *# i#))
+    (P.indexOffAddr# arr# ((2# *# i#) +# 1#))
+  readOffAddr# arr# i# =
+    \s0 -> case P.readOffAddr# arr# (2# *# i#) s0 of
+      (# s1, i0 #) -> case P.readOffAddr# arr# ((2# *# i#) +# 1#) s1 of
+        (# s2, i1 #) -> (# s2, WordPair i0 i1 #)
+  writeOffAddr# addr# i# (WordPair a b) =
+    \s0 -> case P.writeOffAddr# addr# (2# *# i#) a s0 of
+       s1 -> case P.writeOffAddr# addr# ((2# *# i#) +# 1#) b s1 of
+         s2 -> s2
+  setOffAddr# = P.defaultSetOffAddr#
